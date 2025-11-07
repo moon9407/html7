@@ -1,16 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>/title>
+        <title></title>
+        <style>
+            /*위치,크기,색상,모양,여백*/
+            ul{list-style: none;} /*disc,square,circle,none*/
+            ol{list-style: upper-alpha;;} /*decimal- 기본,alpha,roman*/
+            table,td{border:2px solid black; border-collapse: collapse;} /* border-collapse: collapse; 선 두께 삭제*/
+            td{width:100px; height:40px; }
+        </style>
     </head>
     <body>
+        <table>
+            <tr>
+                <th colspan="3">1</th>
+
+                <td>4</td>
+            </tr>
+                <td rowspan="2">5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+            </tr>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+        </table>
+        <hr>
+        <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+            </tr>
+        </table>
+
+
+        <p>검색사이트</p>
         <ul>
             <li>다음</li>
             <li>네이버</li>
             <li>구글</li>
             <li>쿠팡</li>
         </ul>
-        <ol>
+        <ol> <!-- type="a"넣으면 a,b,c순으로 번호 붙음-->
             <li>다음</li>
             <li>네이버</li>
             <li>구글</li>
