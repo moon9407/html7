@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type='button']{background: #efefef; width:100px; height:40px;
+        border:1px solid #b4b4b4:
+        }
+        input[type='button']:hover{background: #fbdede;
+        border:1px solid #ff8080;}
+    </style>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <!--autofocus : 실행 시 커서를 자동으로 이동-->
+    <!--placeholder : 입력창 도움말-->
+    <!--readonly : 입력 또는 수정 불가-->
+    <!--required : 필수입력-->
+    
+    <form action="#" method="get">
+
+        <label>아이디</label>
+        <input type="text" name="id" value="admin" readonly><br>
+        <label>패스워드</label>
+        <input type="password" name="pw" autofocus><span>* 8자리 이상</span><br>
+    <label>패스워드 확인</label>
+    <input type="password" name="pw2"><br>
+    <label>이름</label>
+    <input type="text" name="name"><br>
+    <label>성별</label><br>
+    <!--radio는 체크박스(동그라미)가 생기지만 하나밖에 선택이 안됨-->
+    <input type="radio" id="man" name="gender" value="남자" checked>   <!--checked 입력 시 실행 후 원하는 칸 미리 선택-->
+    <label for="man">남자</label>
+    <input type="radio" id="woman" name="gender" value="여자">
+    <label for="woman">여자</label>
+    <br>
+    <label>취미</label><br>
+    <!--checkbox(네모)는 중복 선택 가능, 리스트 형태로 전달-->
+    <input type="checkbox" checked id="game" name="hobby" value="게임">
+    <label for="game">게임</label>
+    <input type="checkbox" id="golf" name="hobby" value="수영">
+    <label for="golf">골프</label>
+    <input type="checkbox" id="swim" name="hobby" value="수영">
+    <label for="swim">수영</label>
+    <input type="checkbox" id="run" name="hobby" value="조깅">
+    <label for="run">조깅</label>
+    <br>
+    <!--누르면 아래로 스크롤 가능한 선택창이 나옴 -->
+    <select name="major">
+        <option value="#">과 선택</option>                      <!--selected 입력 시 원하는 값 먼저 선택되어 출력-->
+        <option value="com"selected>컴퓨터공학</option>
+        <option value="elect">전자공학</option>
+        <option value="history">역사학과</option>
+    </select>
+
+    <br>
+    <label>달력</label>
+    <input type="date" name="day">             <!--달력추가-->
+    <br>
+    <label>날짜 시간</label>
+    <input type="datetime-local" name="daytime"><!--datetime-local : 시간 까지도 입력 가능-->
+    <br>
+    <input type="file" name="nfile">   <!--파일 첨부-->
+    <br>
+    <!--textarea : 메모장같이 입력가능한 창 생성-->
+    <textarea name="memo" cols="80" rows="15"></textarea> <!--cols: 가로칸, rows:세로칸 -->
+    <br>
+
+    <input type="button" value="회원가입">
+    <input type="reset" value="지우기">
+</form>
+    
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type='text']{width:100px;}
+    </style>
+</head>
+<body>
+    <form action="#" method="post" name="frm">
+        <!-- hidden : 숨겨서 보내기-->
+        <input type="hidden" name="ipaddress" value="127.0.0.1">
+        <input type="search" name="search"><br> <!--그 칸 안에 전체 지우기(x) 표시가 생김 -->
+        <!-- email : email주소 확인 ㅁ,. 이 들어갔는지 확인해줌 없으면 경고창 출력-->
+         <input type="email" name="email" placeholder="email입력">
+        <label>아이디</label>
+        <!-- text : 한줄입력-->
+        <input type="text" name="id" size="10" maxlength="5" value="abc"><br> <!--size : 칸의 크기를 10만큼(주로 스타일에서 width로 조정)
+        , max(min)length="5" : 글자수 제한, value : 미리 지정한 글자 입력-->
+        <label>패스워드</label>
+        <!--password : *,. 으로 입력한 글자를 표시-->
+        <input type="password" name="pw" placeholder="password는 8자리 이상"><br>
+        <!--placeholder="" : 칸 안에 뭘 입력해야하는지 적어줄 수 있음-->
+        <!--submit : 전송-->
+        <input type="submit" value="로그인">
+        <!--reset : 입력된 글자 전체 지우기-->
+        <input type="reset" value="입력된 내용 지우기">
+
+    </form>
+</body>
+</html>
