@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>area 태그</title>
 </head>
 <body>
-    
+    <h2>이벤트 - area태그 사용하기</h2>        <!--a태그는 하나밖에 못걸음-->
+    <!-- <a href="http://samsung.com" target="_blank">     target="_blank" 새창으로 출력 -->
+        <img src="image/event01.jpg" usemap="#s_event">
+        <!-- map : 이미지 map에 area링크를 적용 -->
+         <!--shape:모양- rect사각,circle원(꼭지점,반지름),poly다각형  coords:위치값-->
+        <map name="s_event">
+            <area shape="rect" coords="100,370,610,587"
+            href="http://samsung.com" target="_blank">
+            <area shape="rect" coords="69,647,263,856"
+            href="https://www.samsung.com/sec/refrigerators/all-refrigerators/" target="_blank">
+            <area shape="rect" coords="265,648,456,853"
+            href="https://www.samsung.com/sec/washers-and-dryers/all-washers-and-dryers/" target="_blank">
+            <area shape="circle" coords="550,750,100"
+            href="https://www.samsung.com/sec/tvs/all-tvs/" target="_blank">
+            <area shape="poly" coords="367,855,68,1065,650,1065"
+            href="https://www.samsung.com/sec/smartphones/all-smartphones/" target="_blank">
+        </map>
 </body>
 </html>
