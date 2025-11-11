@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃</title>
+    <style>
+        /*
+        1. 블록요소: width,height지정가능, 옆 공간 있어도 하단 배치
+            -display:inline, inline-block
+        2. 인라인요소 : width,height 지정불가, 옆으로 배치
+            -form,image,span,a,strong
+            -display:block, inline-block
+        3. 인라인블록요소지정 : width,height 지정가능, 옆으로 배치
+            -display:inline-block
+        */
+        *{padding: 0; margin: 0;}
+        span,div{border: 8px solid black;}
+        span{width: 200px; height: 100px; display: inline-block;}
+        div{width: 50%; height: 100px;margin: 30px;
+        box-sizing: border-box;
+        }
+        #s02{display:none;} /*display:none - 아예없애기*/
+        #d02:hover{display: none;} /*hover: 마우스 올리면 적용*/
+    </style>
+</head>
+<body>
+    <!--인라인요소(form,image,span,a,strong)는  옆으로 이어서 표시-->  
+    <a>aaa</a>
+    <a>bbb</a>
+    <a>ccc</a>
+    <span>1</span>
+    <span id="s02">2</span>
+    <span>3</span>
+    <!--블록요소(div)는 하단으로 이어서 표시-->  
+    <div>11</div>
+    <br>
+    <div id="d02">22</div>
+    <div>33</div>
+</body>
+</html>
