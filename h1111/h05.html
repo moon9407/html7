@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        #header{width:1200px; height:80px; background: #f5f5f5;
+            border-radius: 16px;    
+            margin:0px auto; padding:10 0px;
+            display: flex;
+            box-sizing: border-box;
+        }
+        #nav>ul{list-style: none; display: flex; text-align: center; letter-spacing: -.4px;
+        }
+        #nav>ul>li{width: 300px; height:80px; line-height: 80px;
+            font-size: 17px; font-weight: 700;
+            border-left: 2px solid #fff;
+            box-sizing: border-box;
+        }
+        #nav>ul>li:hover{color: #5e2bb8;font-weight: 700; border-radius: 16px;
+            border: 1px solid #5e2bb8; background-color:#f6f2fb;
+        }
+        #section{width:1200px; height:700px;
+        margin: 15px auto; display: flex; justify-content: space-between;
+        flex-wrap: wrap;
+        }
+        #article{
+        }
+        #article>#s_img{width: 270px; height: 270px;
+        border-radius: 16px;
+        background-size: cover;
+        overflow: hidden;
+        }
+        #article>#s_img>img{width: 100%; height: 100%;}
+        #cont{width: 270px; height: 200px;
+        padding: 20px 0px 24px;    
+        }
+        #cont>h5{font-size:16px; color: #682fca; 
+        line-height: 19px; margin: 0 0 6px;
+        }
+        #cont>h3{font-size: 20px; font-weight: 500;
+        line-height: 26px; color: #111;
+        }
+        #cont>p{font-size: 14px; color:#666;
+        }
+        #cont>p>span{color:#ddd; margin: 0 8px;
+        }
+        #cont>h4{font-size: 22px; color:#111; margin: 8px 0px 6px;
+        }
+        #cont>h4>span{font-size: 18px; font-weight: 500; color:#111;
+        }
+
+        #cont>div>h1{display: inline-block; line-height: 24px;
+        padding: 0 8px; margin: 2px 0 0 2px;
+        font-size: 13px; font-weight: 700; color:#ff299c;
+        background: #f2f2f3; border-radius: 4px;
+        }
+        #cont>div>h2{display: inline-block; line-height: 24px;
+        padding: 0 8px; margin: 2px 0 0 2px;
+        font-size: 13px; font-weight: 700; color: #7d7886;
+        background: #f2f2f3; border-radius: 4px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="nav">
+            <ul>
+                <li>동남아</li>
+                <li>중국</li>
+                <li>일본</li>
+                <li>유럽</li>
+            </ul>
+        </div>
+        
+    </div>
+    <div id="section">
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha.png">
+            </div>
+            <div id="cont">
+                    <h5>하롱베이 데이크루즈&뷔페</h5>
+                    <h3>하노이/하롱베이 4,5,6일 #베스트셀러</h3>
+                    <p>인천/부산<span>|</span>4,5,6일</p>
+                    <h4>399,000<span>원~</span></h4>
+                    <div>
+                        <h1>호텔 업그레이드</h1>
+                        <h2>하노이 핵심관광</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha2.jpg">
+            </div>
+            <div id="cont">
+                    <h5>야류 해상 국립공원</h5>
+                    <h3>타이베이/야류/지우펀 3,4일 #천등 날리기</h3>
+                    <p>인천/김포/청주<span>|</span>3,4일</p>
+                    <h4>509,900<span>원~</span></h4>
+                    <div>
+                        <h2>먹거리 가득 야시장</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha3.jpg">
+            </div>
+            <div id="cont">
+                    <h5>👍 베트남 베스트셀러</h5>
+                    <h3>다낭/호이안 5,6일 #5성 추천호텔 #바나힐</h3>
+                    <p>인천/청주<span>|</span>5,6일</p>
+                    <h4>289,000<span>원~</span></h4>
+                    <div>
+                        <h1>한정특가</h1>
+                        <h2>맛있는 다낭여행</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha4.jpg">
+            </div>
+            <div id="cont">
+                    <h5>아름다운 물빛의 산호섬</h5>
+                    <h3>푸껫 5일 #가성비 #4성급호텔 #팡아만 #야시장투어</h3>
+                    <p>인천<span>|</span>5일</p>
+                    <h4>669,000<span>원~</span></h4>
+                    <div>
+                        <h2>타이전통지압</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha5.jpg">
+            </div>
+            <div id="cont">
+                    <h5>🎁취향저격 베스트셀러 특가모음</h5>
+                    <h3>나트랑/달랏 5일 #미식여행or해변투어or힐링여행</h3>
+                    <p>인천/부산/대구/청주<span>|</span>5일</p>
+                    <h4>289,000<span>원~</span></h4>
+                    <div>
+                        <h2>나트랑 5성호텔UP</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha6.jpg">
+            </div>
+            <div id="cont">
+                    <h5>코끼리 먹이주기 체험</h5>
+                    <h3>치앙마이/치앙라이 5일#가성비추천 #4성급호텔</h3>
+                    <p>인천<span>|</span>5일</p>
+                    <h4>479,000<span>원~</span></h4>
+                    <div>
+                        <h2>청/백/금 3色 사원</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha7.jpg">
+            </div>
+            <div id="cont">
+                    <h5>도심속 자연&미식&액티비티</h5>
+                    <h3>싱가포르 5일 #전일관광or1일자유</h3>
+                    <p>인천/부산<span>|</span>5일</p>
+                    <h4>868,600<span>원~</span></h4>
+                    <div>
+                        <h1>NO쇼핑</h1>                        
+                        <h2>타이전통지압</h2>
+                    </div>
+            </div>        
+        </div>
+        <div id="article">
+            <div id="s_img">
+                <img src="image/ha8.jpg">
+            </div>
+            <div id="cont">
+                    <h5>남쪽으로 떠나는 힐링여행</h5>
+                    <h3>[만남(滿南)] 가오슝 3,4일 #대만남부투어 #타이난</h3>
+                    <p>인천/김포<span>|</span>3,4일</p>
+                    <h4>549,900<span>원~</span></h4>
+                    <div>
+                        <h1>NO쇼핑</h1>                        
+                        <h2>타이전통지압</h2>
+                    </div>
+            </div>        
+        </div>
+    </div>
+    
+    
+    
+</body>
+</html>
