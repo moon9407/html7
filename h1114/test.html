@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0;}
+       .workspace {
+        height: 100vh;
+        width: 100%;
+        background: yellow;
+        display: grid;
+        place-items: center;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="workspace">
+        <h1>Scroll with Wheel or Trackpad</h1>
+    </div>
+    <script>
+
+        const zoomElement = document.querySelector(".workspace");
+        let zoom = 1;
+        const ZOOM_SPEED = 0.1;
+
+        document.addEventListener("wheel", function (e) {
+        if (e.deltaY > 0) {
+            zoomElement.style.transform = `scale(${(zoom += ZOOM_SPEED)})`;
+        } else {
+            zoomElement.style.transform = `scale(${(zoom -= ZOOM_SPEED)})`;
+        }
+        });
+
+    </script>
+</body>
+</html>
