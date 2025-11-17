@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        table,th,td{border: 1px solid black; border-collapse: collapse;}
+        table{margin: 20px auto; text-align: center;}
+        th,td{width: 100px;height: 40px;}
+    </style>
 </head>
 <body>
     <script>
@@ -31,16 +36,61 @@
             if(i==3) break
             document.write(i+"<br>")
         }
-        */
+
         for(var i=2;i<=9;i++){
             for(var j=2;j<=9;j++){
-                document.write(i+"*"+j+"="+(i*j)+"<br>")
+                //document.write(i+"*"+j+"="+(i*j)+"<br>")
                 // ``:백키
                 document.write(`${i} * ${j} = ${i*j} <br>`)
+                }
+                }
+  
+                // html 코드를 만들어서 innerhtml로 넣어야함.
+                document.querySelector("#tbody").innerHTML = 
+                `
+                <tr>
+                    <th>2</th>
+                    <th>X</th>
+                    <th>1</th>
+                    <th>=</th>
+                    <th>2</th>
+                </tr>
+                `
+                */
+
+    </script>
+
+
+    <table>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <script>
+        console.log(document.querySelector("#tbody"));
+        var tbody = document.querySelector("#tbody");
+        for(var i=2;i<=9;i++){
+            tbody.innerHTML += `
+            <tr>
+                <td colspan=5>[ ${i} 단 ]</td>
+            </tr>
+            `;
+            for(var j=1;j<=9;j++){
+                console.log(i);
+                tbody.innerHTML = tbody.innerHTML + `
+                <tr>
+                    <td>${i}</td>
+                    <td>X</td>
+                    <td>${j}</td>
+                    <td>=</td>
+                    <td>${i*j}</td>
+                </tr>
+
+            `;
             }
         }
 
+
     </script>
-    
 </body>
 </html>
