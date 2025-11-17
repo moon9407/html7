@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -226,6 +227,9 @@
         width: 100%;
       }
     }
+
+    .on{color:blue;}
+    .off{color:red;}
   </style>
 </head>
 <body>
@@ -267,11 +271,11 @@
         </tr>
         <tr>
           <td>비밀번호 <span style="color:red"></span></td>
-          <td><input type="password" placeholder="영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자"></td>
+          <td><input type="password" id="pw" placeholder="영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10자~16자"></td>
         </tr>
         <tr>
           <td>비밀번호 확인 <span style="color:red"></span></td>
-          <td><input type="password" id="pw2" onkeyup="pwBtn()"><br><br>
+          <td><input type="password" id="pw2" onkeyup="pwBtn()" ><br><br>
           <span id="pwTxt"></span>
           </td>
         </tr>
@@ -328,12 +332,23 @@
   </div>
   <footer></footer>
   <script>
+
     function pwBtn(){
-      console.log(document.querySelector("#pw2").value);
+      console.log("pw : ",document.querySelector("#pw").value);
+      console.log("pw2 : ",document.querySelector("#pw2").value);
+      var pw = document.querySelector("#pw").value
+      var pw2 = document.querySelector("#pw2").value
+      if(pw == pw2){
+        console.log("같습니다.")
+        console.log(document.querySelector("#pwTxt").innerHTML="<span class='on'>같습니다.</span>")
+      }else{
+        console.log("다릅니다.")
+        console.log(document.querySelector("#pwTxt").innerHTML="<span class='off'>다릅니다.</span>")
+      }
     }
 
-    document
-    
+    //비밀번호 확인바랍니다.
+    document.querySelector("#pwTxt").innerText = "비밀번호 확인바랍니다.";
   </script>
 </body>
 </html>
