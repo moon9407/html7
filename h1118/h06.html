@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:100px; height:40px; text-align: center; }
+        #txt{width:400px; height:50px; border:1px solid black; }
+    </style>
+</head>
+<body>
+    <script>
+        /*
+        function calc(a,b){
+            return (a+b)*10;  // return 호출하는 지점으로 값을 돌려줌. 자바스크립트에서는 하나만 리턴가능
+        }
+
+        // 함수 - 코드중복 방지, 관리 효율성↑,
+        function func(a,b,tstr){                  //함수정의
+            //document.write(a+b);
+            document.querySelector("#"+tstr).innerHTML = calc(a,b);
+        }
+        */
+
+        function conBtn(){
+            alert("확인")
+            var txt = document.querySelector("#txt").innerText;
+            console.log(txt);
+            var arr = txt.split(",");
+            console.log(arr);
+            document.querySelector("#tbody").innerHTML = `
+            <td>1</td>
+            <td>홍길동</td>
+            <td>100</td>
+            <td>100</td>
+            `;
+        }
+
+    </script>
+    <div id="txt">1,홍길동,100,100</div>
+    <button type="button" onclick="conBtn()">확인</button>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>국어</th>
+            <th>영어</th>
+        </tr>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+    <!--
+    <div id="txt1"></div>
+    <button type="button" onclick="func(10,2,'txt1')">확인1</button>    /*함수호출*/
+    <div id="txt2"></div>
+    <button type="button" onclick="func(2,4,'txt2')">확인2</button>
+    <div id="txt3"></div>
+    <button type="button" onclick="func(1,3,'txt3')">확인3</button>
+    -->
+
+
+</body>
+</html>

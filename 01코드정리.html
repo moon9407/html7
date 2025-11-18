@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 모든 코드 정리 - 상세 주석</title>
+    <style>
+        /* ====================================
+           1. CSS 기본 선택자 (Selectors)
+           ==================================== */
+        
+        /* 전체 선택자: 모든 요소에 스타일 적용 */
+        * {
+            margin: 0;          /* 모든 요소의 외부 여백을 0으로 설정 */
+            padding: 0;         /* 모든 요소의 내부 여백을 0으로 설정 */
+            box-sizing: border-box;  /* padding과 border를 width에 포함 */
+        }
+
+        /* 태그 선택자: 특정 HTML 태그에 스타일 적용 */
+        body {
+            font-family: 'Arial', '맑은 고딕', sans-serif;  /* 글꼴 우선순위 지정 */
+            line-height: 1.6;   /* 줄 간격을 글자 크기의 1.6배로 설정 */
+            color: #333;        /* 기본 텍스트 색상 (진한 회색) */
+            background-color: #f4f4f4;  /* 배경색 (연한 회색) */
+        }
+
+        /* 클래스 선택자: .클래스명으로 선택 */
+        .container {
+            max-width: 1200px;  /* 최대 너비 제한 */
+            margin: 0 auto;     /* 좌우 중앙 정렬 (상하 0, 좌우 auto) */
+            padding: 20px;      /* 내부 여백 사방 20px */
+        }
+
+        /* ID 선택자: #아이디명으로 선택 (한 페이지에 하나만 존재) */
+        #header {
+            background-color: #2c3e50;  /* 배경색 (진한 파란 회색) */
+            color: white;       /* 텍스트 색상 */
+            padding: 1rem 0;    /* 상하 1rem, 좌우 0 여백 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+        }
+
+        /* ====================================
+           2. 복합 선택자 (Combinators)
+           ==================================== */
+        
+        /* 자손 선택자: 공백으로 구분, 모든 하위 요소 선택 */
+        .menu li {
+            list-style: none;   /* 리스트 마커(점, 숫자) 제거 */
+            display: inline-block;  /* 가로로 나열하면서 크기 지정 가능 */
+            margin: 0 15px;     /* 좌우 여백 15px */
+        }
+
+        /* 자식 선택자: >로 구분, 직계 자식만 선택 */
+        .nav > ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 인접 형제 선택자: +로 구분, 바로 다음 형제 요소 선택 */
+        h2 + p {
+            font-weight: bold;  /* 굵은 글씨 */
+            color: #2980b9;     /* 파란색 */
+        }
+
+        /* 일반 형제 선택자: ~로 구분, 이후 모든 형제 요소 선택 */
+        h2 ~ p {
+            margin-left: 20px;  /* 왼쪽 여백 */
+        }
+
+        /* ====================================
+           3. 속성 선택자 (Attribute Selectors)
+           ==================================== */
+        
+        /* 특정 속성을 가진 요소 선택 */
+        [data-type] {
+            border: 1px solid #ddd;  /* 1px 실선 테두리 */
+        }
+
+        /* 특정 속성값을 가진 요소 선택 */
+        [type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;  /* 모서리 둥글게 4px */
+        }
+
+        /* 속성값이 특정 문자열로 시작하는 요소 */
+        [class^="btn-"] {
+            padding: 10px 20px;
+            cursor: pointer;    /* 마우스 커서를 손가락 모양으로 변경 */
+        }
+
+        /* ====================================
+           4. 가상 클래스 (Pseudo-classes)
+           ==================================== */
+        
+        /* 마우스 호버 시 스타일 */
+        a:hover {
+            color: #e74c3c;     /* 빨간색으로 변경 */
+            text-decoration: underline;  /* 밑줄 표시 */
+        }
+
+        /* 방문한 링크 스타일 */
+        a:visited {
+            color: #9b59b6;     /* 보라색 */
+        }
+
+        /* 활성 상태 (클릭 중) */
+        a:active {
+            color: #c0392b;     /* 진한 빨간색 */
+        }
+
+        /* 포커스 상태 (키보드로 선택됨) */
+        input:focus {
+            outline: 2px solid #3498db;  /* 파란색 외곽선 */
+            border-color: #3498db;
+        }
+
+        /* 첫 번째 자식 요소 */
+        li:first-child {
+            border-top: 2px solid #000;
+        }
+
+        /* 마지막 자식 요소 */
+        li:last-child {
+            border-bottom: 2px solid #000;
+        }
+
+        /* n번째 자식 요소 (2n은 짝수, 2n+1은 홀수) */
+        tr:nth-child(2n) {
+            background-color: #ecf0f1;  /* 짝수 행 배경색 */
+        }
+
+        /* ====================================
+           5. 가상 요소 (Pseudo-elements)
+           ==================================== */
+        
+        /* 요소의 첫 글자 스타일 */
+        p::first-letter {
+            font-size: 2em;     /* 글자 크기를 2배로 */
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        /* 요소의 첫 줄 스타일 */
+        p::first-line {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        /* 요소 앞에 콘텐츠 추가 */
+        .important::before {
+            content: "⚠️ ";     /* 경고 아이콘 추가 */
+            color: #f39c12;
+        }
+
+        /* 요소 뒤에 콘텐츠 추가 */
+        .note::after {
+            content: " 📌";     /* 핀 아이콘 추가 */
+        }
+
+        /* ====================================
+           6. 박스 모델 (Box Model)
+           ==================================== */
+        
+        .box-model {
+            /* 너비와 높이 */
+            width: 300px;       /* 요소의 너비 */
+            height: 200px;      /* 요소의 높이 */
+            max-width: 100%;    /* 최대 너비 제한 */
+            min-height: 100px;  /* 최소 높이 설정 */
+            
+            /* 패딩 (내부 여백) */
+            padding: 20px;      /* 사방 20px */
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            /* 단축: padding: 상 우 하 좌; */
+            /* 단축: padding: 상하 좌우; */
+            
+            /* 마진 (외부 여백) */
+            margin: 20px;       /* 사방 20px */
+            margin-top: 10px;
+            margin-right: auto; /* 우측 자동 (중앙 정렬 시 사용) */
+            margin-bottom: 10px;
+            margin-left: auto;  /* 좌측 자동 (중앙 정렬 시 사용) */
+            
+            /* 테두리 */
+            border: 2px solid #000;  /* 두께 스타일 색상 */
+            border-width: 2px;
+            border-style: solid;     /* solid, dashed, dotted, double 등 */
+            border-color: #000;
+            border-radius: 10px;     /* 모서리 둥글게 */
+            
+            /* 개별 테두리 설정 */
+            border-top: 1px solid red;
+            border-right: 2px dashed blue;
+            border-bottom: 3px dotted green;
+            border-left: 4px double orange;
+        }
+
+        /* ====================================
+           7. 디스플레이 속성 (Display)
+           ==================================== */
+        
+        .block {
+            display: block;     /* 블록 요소: 한 줄 전체 차지 */
+            width: 100%;
+        }
+
+        .inline {
+            display: inline;    /* 인라인 요소: 내용만큼만 차지, 크기 지정 불가 */
+        }
+
+        .inline-block {
+            display: inline-block;  /* 인라인처럼 나열되지만 크기 지정 가능 */
+            width: 200px;
+            height: 50px;
+        }
+
+        .none {
+            display: none;      /* 요소를 완전히 숨김 (공간도 차지하지 않음) */
+        }
+
+        .hidden {
+            visibility: hidden; /* 요소를 숨김 (공간은 차지함) */
+        }
+
+        /* ====================================
+           8. 포지션 (Position)
+           ==================================== */
+        
+        .static {
+            position: static;   /* 기본값: 일반적인 문서 흐름 */
+        }
+
+        .relative {
+            position: relative; /* 원래 위치 기준으로 이동 */
+            top: 10px;          /* 위에서 10px 아래로 */
+            left: 20px;         /* 왼쪽에서 20px 오른쪽으로 */
+        }
+
+        .absolute {
+            position: absolute; /* 가장 가까운 position 지정 부모 기준 */
+            top: 0;
+            right: 0;
+            z-index: 10;        /* 쌓임 순서 (숫자가 클수록 위) */
+        }
+
+        .fixed {
+            position: fixed;    /* 뷰포트(화면) 기준 고정 */
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+
+        .sticky {
+            position: sticky;   /* 스크롤 시 특정 위치에 고정 */
+            top: 0;             /* 상단에서 0px 위치에 고정 */
+        }
+
+        /* ====================================
+           9. Flexbox 레이아웃
+           ==================================== */
+        
+        .flex-container {
+            display: flex;      /* Flexbox 활성화 */
+            
+            /* 주축 방향 설정 */
+            flex-direction: row;     /* 기본값: 가로 방향 */
+            /* flex-direction: column;  세로 방향 */
+            /* flex-direction: row-reverse;  가로 역순 */
+            
+            /* 줄 바꿈 설정 */
+            flex-wrap: wrap;    /* 공간 부족 시 다음 줄로 */
+            /* flex-wrap: nowrap;  줄 바꿈 없음 (기본값) */
+            
+            /* 주축 정렬 */
+            justify-content: center;  /* center, flex-start, flex-end, space-between, space-around, space-evenly */
+            
+            /* 교차축 정렬 */
+            align-items: center;      /* center, flex-start, flex-end, stretch, baseline */
+            
+            /* 여러 줄일 때 교차축 정렬 */
+            align-content: space-between;
+            
+            gap: 20px;          /* 아이템 간 간격 */
+        }
+
+        .flex-item {
+            flex: 1;            /* 단축: flex-grow flex-shrink flex-basis */
+            
+            flex-grow: 1;       /* 여유 공간을 차지하는 비율 */
+            flex-shrink: 1;     /* 공간 부족 시 줄어드는 비율 */
+            flex-basis: auto;   /* 기본 크기 */
+            
+            align-self: flex-start;  /* 개별 아이템 정렬 */
+            order: 1;           /* 표시 순서 변경 */
+        }
+
+        /* ====================================
+           10. Grid 레이아웃
+           ==================================== */
+        
+        .grid-container {
+            display: grid;      /* Grid 활성화 */
+            
+            /* 열(column) 정의 */
+            grid-template-columns: 1fr 2fr 1fr;  /* 1:2:1 비율 3열 */
+            /* grid-template-columns: repeat(3, 1fr);  3개 균등 분할 */
+            /* grid-template-columns: 200px auto 100px;  고정+자동+고정 */
+            
+            /* 행(row) 정의 */
+            grid-template-rows: 100px auto 50px;
+            
+            /* 간격 설정 */
+            gap: 20px;          /* 행과 열 간격 */
+            row-gap: 10px;      /* 행 간격 */
+            column-gap: 20px;   /* 열 간격 */
+            
+            /* 정렬 */
+            justify-items: center;   /* 각 셀 내부 가로 정렬 */
+            align-items: center;     /* 각 셀 내부 세로 정렬 */
+            justify-content: center; /* 그리드 전체 가로 정렬 */
+            align-content: center;   /* 그리드 전체 세로 정렬 */
+        }
+
+        .grid-item {
+            /* 셀 병합 */
+            grid-column: 1 / 3;      /* 1열부터 3열 전까지 (2열 차지) */
+            grid-row: 1 / 2;         /* 1행부터 2행 전까지 */
+            
+            /* 단축 표기 */
+            grid-area: 1 / 1 / 2 / 3;  /* row-start / col-start / row-end / col-end */
+            
+            /* 개별 정렬 */
+            justify-self: start;
+            align-self: end;
+        }
+
+        /* ====================================
+           11. 텍스트 스타일
+           ==================================== */
+        
+        .text-styles {
+            /* 글꼴 */
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;         /* 글자 크기 */
+            font-weight: bold;       /* 굵기: normal, bold, 100-900 */
+            font-style: italic;      /* 기울임: normal, italic, oblique */
+            
+            /* 텍스트 정렬 */
+            text-align: center;      /* left, right, center, justify */
+            text-align-last: center; /* 마지막 줄 정렬 */
+            
+            /* 텍스트 장식 */
+            text-decoration: underline;  /* none, underline, overline, line-through */
+            text-decoration-color: red;
+            text-decoration-style: wavy; /* solid, double, dotted, dashed, wavy */
+            
+            /* 텍스트 변형 */
+            text-transform: uppercase;   /* uppercase, lowercase, capitalize */
+            
+            /* 줄 높이와 간격 */
+            line-height: 1.8;        /* 줄 간격 */
+            letter-spacing: 2px;     /* 자간 */
+            word-spacing: 5px;       /* 단어 간격 */
+            
+            /* 들여쓰기 */
+            text-indent: 20px;       /* 첫 줄 들여쓰기 */
+            
+            /* 그림자 */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);  /* x y blur color */
+            
+            /* 공백 처리 */
+            white-space: nowrap;     /* normal, nowrap, pre, pre-wrap, pre-line */
+            
+            /* 텍스트 넘침 처리 */
+            overflow: hidden;
+            text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+            
+            /* 단어 분리 */
+            word-break: break-all;   /* normal, break-all, keep-all */
+            word-wrap: break-word;   /* 긴 단어 줄바꿈 */
+        }
+
+        /* ====================================
+           12. 색상 (Colors)
+           ==================================== */
+        
+        .colors {
+            /* 텍스트 색상 */
+            color: #ff0000;          /* 16진수 */
+            color: rgb(255, 0, 0);   /* RGB */
+            color: rgba(255, 0, 0, 0.5);  /* RGBA (투명도 포함) */
+            color: hsl(0, 100%, 50%);     /* HSL (색상, 채도, 명도) */
+            color: hs...
