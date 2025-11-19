@@ -25,21 +25,39 @@
         */
 
         function conBtn(){
-            alert("확인")
-            var txt = document.querySelector("#txt").innerText;
+            alert("데이터를 저장합니다.");
+            var txt = document.querySelector("#txt").value;    //데이터 가져오기
+            var tbody = document.querySelector("#tbody");
+            var dhtml = tbody.innerHTML;
             console.log(txt);
-            var arr = txt.split(",");
+
+            var arr = txt.split(",");  //문자열->배열분리 해서 제공
+            //합계 평균 추가
+            arr.push(Number(arr[2])+Number(arr[3]));    //합계
+            arr.push((Number(arr[2])+Number(arr[3]))/2);  //평균
+            
             console.log(arr);
-            document.querySelector("#tbody").innerHTML = `
-            <td>1</td>
-            <td>홍길동</td>
-            <td>100</td>
-            <td>100</td>
+            tbody.innerHTML =                   //기존 데이터에 입력된 데이터 추가 
+            tbody.innerHTML+`
+            <td>${arr[0]}</td>
+            <td>${arr[1]}</td>
+            <td>${arr[2]}</td>
+            <td>${arr[3]}</td>
+            <td>${arr[4]}</td>
+            <td>${arr[5]}</td>
             `;
+            document.querySelector("#txt").value = "";
+        }
+
+        function keyBtn(event){
+            if(event.keyCode == 13){
+                conBtn();
+            }
         }
 
     </script>
-    <div id="txt">1,홍길동,100,100</div>
+    <div>2,유관순,90,90</div>
+    <input type="text" id="txt" onkeyup="keyBtn(event)"><br>
     <button type="button" onclick="conBtn()">확인</button>
     <table>
         <tr>
@@ -47,6 +65,8 @@
             <th>이름</th>
             <th>국어</th>
             <th>영어</th>
+            <th>합계</th>
+            <th>평균</th>
         </tr>
         <tbody id="tbody">
 
