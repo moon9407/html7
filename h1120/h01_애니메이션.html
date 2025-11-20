@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <style>
+        #txt{border:1px solid black; width:300px; height:200px;
+            display: none;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#aBtn").click(function(){
+                console.log($(this).text());
+                console.log($("#aBtn").text());
+                let aBtn = $(this);
+                $("#txt").stop().fadeToggle(500,function(){   // Toggle앞에 fade,slide 등 열리고 닫히고를 하나로 합쳐줌
+                    if(aBtn.text() == "나타남") aBtn.text("사라짐");   //버튼 누르면 글자 바꿈
+                    else aBtn.text("나타남");
+                }); //let aBtn
+            }); //aBtn
+
+            /*
+            $("#aBtn").click(function(){
+                //alert("확인")
+                $("#txt").stop().fadeIn(1000,function(){     // slideDown(애니메이션 열리는 속도,적용효과) 아래로 펼쳐지기   1000: 1초
+                // fadeIn() 서서히 나타나기, fadeOut() 서서히 사라지기
+            });
+        });
+        $("#aBtn_no").click(function(){
+            $("#txt").stop().fadeOut(1000,function(){});    //  slideUp (애니메이션 닫히는 속도,적용효과) 위로 접히기  1000: 1초
+        });
+        */
+
+        });//jquery
+    </script>
+</head>
+<body>
+    <button type="button" id="aBtn">나타남</button>
+
+    <br>
+    <div id="txt">
+        인천에서 배로 출발해 백두산 남파 입구까지 2박3일이 걸렸다. 한국의 기온이 35°C를 넘고 있을 때 남파 입구의 전광판에는 21°C가 찍혔다. 가이드는 천지에 오르면 추우니까 긴팔 옷과 우비를 준비하라고 했다. 오전에 비가 많이 내려 천지를 본 탐방객은 없다고 한다. 우리 일행들도 불안한 표정이 역력하다.
+    </div>
+</body>
+</html>
