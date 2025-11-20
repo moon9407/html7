@@ -13,11 +13,11 @@
             $("#jBtn").click(function(){
                 
                 $.ajax({
-                    url:"member1.json",       //가져올 url주소
-                    type:"get",   //전송방식 - get,post
-                    data:{},  //전송할 데이터 - 
+                    url:"member1.json",     //가져올 url주소
+                    type:"get",             //전송방식 - get,post
+                    data:{},                //전송 할 데이터 - 
                     dataType:"json",        //전송받는 데이터타입-html,text,json,xml
-                    success:function(data){ // 성공시실행
+                    success:function(data){ //성공 시 실행
                         alert('성공');
                         console.log(data); //
                         $("#d01").text(`
@@ -26,7 +26,7 @@
                            ${data[0].gender},${data[0].ip_address}
                         `);
                     },
-                    error:function(){       //실패시 실행
+                    error:function(){       //실패 시 실행
                         alert('실패');
                     }
                 });//ajax

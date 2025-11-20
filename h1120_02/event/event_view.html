@@ -20,13 +20,24 @@
 <script type="text/javascript" src="../js/jquery.anchor.js"></script>
 
 <script type="text/javascript">
-//기본 선언문
-//$(document).ready(function() {});
-//약식jquery 언어
+//기본제이쿼리 구문
+//$(document).ready(function() {});//jquery
+//약식 구문
 $(function(){
-
-})
+	$.ajax({
+		url:"comment.json",
+		type:"get",
+		dataType:"json",
+		data:{},
+		success:function(data){
+			alert("하단 댓글을 가져옵니다.");
+			console.log(data);
+		},
+		error:function(){alert("실패");}
+	});//ajax
+})//jquery
 </script>
+<style> a{cursor: pointer;}</style>
 </head>
 <body>
 
@@ -199,69 +210,120 @@ $(function(){
 						</table>
 					</div>
 					<!-- //이전다음글 -->
+					<script>
+						let cno = 1;
+						$(function(){
+							//keyCode함수
+							$(".replyTxt").keyup(function(e){
+								console.log(e.keyCode);
+								if(e.keyCode == 13)
+									$(this).closest("ul").find(".replyBtn").click();
+							});
 
+							//등록버튼 클릭함수
+							$(".replyBtn").click(function(){
+								let ul = $(this).closest("ul");
+								// 댓글내용 확인
+								if(ul.find(".replyType").val().length<=0){
+									alert("댓글 내용을 입력하셔야 저장이 가능합니다.");
+									ul.find(".replyType").focus();
+									return;
+								}
+
+								// 댓글정보
+								cno;
+								let id = "aaa";
+								let cpw =$(this).closest("ul").find(".replynum").val();
+								let ccontent = ul.find(".replyType").val()
+								let cdate = todayTime();
+								//댓글 출력
+								let dataHtml = ``;
+								dataHtml += `
+								<ul id='${cno}'>
+									<li class="name">${id} <span>[${cdate}]</span></li>
+									<li class="txt">${ccontent}</li>
+									<li class="btn">
+										<a class="rebtn updateBtn">수정</a>
+										<a class="rebtn deleteBtn">삭제</a>
+									</li>
+								</ul>
+								`;
+
+								// 댓글리스트 앞에 추가
+								$(".replyBox").prepend(dataHtml);
+								cno++;  //1증가
+								ul.find(".replynum").val("");
+								ul.find(".replyType").val("");
+								alert("하단 댓글을 저장합니다.");
+
+							});//replyBtn
+
+
+
+
+							// 날짜 시간 함수
+							const todayTime = function(){
+								let now = new Date(); //날짜 객체 선언
+								let year = now.getFullYear();
+								let month = now.getMonth()+1;  // 0월부터 시작이기 때문에 +1 추가
+								let day = now.getDate();
+								let hour = now.getHours();
+								let minute = now.getMinutes();
+								let second = now.getSeconds();
+								
+								return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+							}
+
+
+
+						});//jquery
+					</script>
 
 					<!-- 댓글-->
 					<div class="replyWrite">
-						<ul>
+						<ul id="1">
 							<li class="in">
 								<p class="txt">총 <span class="orange">3</span> 개의 댓글이 달려있습니다.</p>
 								<p class="password">비밀번호&nbsp;&nbsp;<input type="password" class="replynum" /></p>
-								<textarea class="replyType"></textarea>
+								<textarea class="replyType replyTxt"></textarea>
 							</li>
-							<li class="btn"><a href="#" class="replyBtn">등록</a></li>
+							<li class="btn"><a class="replyBtn">등록</a></li>
 						</ul>
 						<p class="ntic">※ 비밀번호를 입력하시면 댓글이 비밀글로 등록 됩니다.</p>
 					</div>
 
 					<div class="replyBox">
+
+						<!--댓글 리스트-->
 						<ul>
 							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
 							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
 							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
-							</li>
-						</ul>
-						<ul>
-							<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
-							<li class="txt">대박!!! 이거 저한테 완전 필요한 이벤트였어요!!</li>
-							<li class="btn">
-								<a href="#" class="rebtn">수정</a>
-								<a href="#" class="rebtn">삭제</a>
+								<a class="rebtn updateBtn">수정</a>
+								<a class="rebtn deleteBtn">삭제</a>
 							</li>
 						</ul>
 
-
-						<!--수정화면,비밀글 화면-->
+						<!--댓글 수정-->
 						<!--
 							<ul>
 								<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
 								<li class="txt"><textarea class="replyType"></textarea></li>
 								<li class="btn">
-									<a href="#" class="rebtn">확인</a>
-									<a href="#" class="rebtn">취소</a>
+									<a href="#" class="rebtn">수정</a>
+									<a href="#" class="rebtn">삭제</a>
 								</li>
 							</ul>
 							
-
 							<ul>
 								<li class="name">jjabcde <span>[2014-03-04&nbsp;&nbsp;15:01:59]</span></li>
 								<li class="txt">
 									<a href="password.html" class="passwordBtn"><span class="orange">※ 비밀글입니다.</span></a>
 								</li>
 							</ul>
-						-->
-						</div>
-					<!-- //댓글 -->
+							-->
+					</div>
+						<!-- //댓글 -->
 
 
 					<!-- Btn Area -->

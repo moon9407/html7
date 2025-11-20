@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>학생성적프로그램</title>
+    <style>
+        table,th,td{border:1px solid black; border-collapse: collapse;}
+        th,td{width:100px; height:40px; text-align: center; }
+    </style>
+    <script>
+        $(function(){
+            $("#takeBtn").click(function(){
+                $.ajax({
+                    url:"comment.json",
+                    type:"get",
+                    data:{},
+                    dataType:"json",
+                    success:function(data){                        
+                        alert("성공");
+                        console.log(data);
+
+                        let dataHtml = '';
+                        for(let i=0;i<10;i++){
+                            dataHtml += `
+                            <tr>
+                                <td>${data[i].cno}</td>
+                                <td>${data[i].id}</td>
+                                <td>${data[i].cdate}</td>
+                                <td>${data[i].ccontent}</td>
+                                <td>${data[i].cpw}</td>
+                            </tr>
+                        `;
+                        }
+                        $("#tbody").html(dataHtml);
+                    },
+                    error:function(){alert("실패");}
+                });//ajax
+            });//takeBtn함수생성
+        })//jquery
+
+        /*
+        $(function(){     //jquery 실행 , jquery사용 이유 : 자바스크립트는 코드가 길기때문에 쉽게하기 위해 사용
+            $("#takeBtn").click(function(){  //데이터 가져오기 함수 생성
+                // alert("확인")    // 실제 실행 되는지 중간 확인용
+                $.ajax({
+                    url:"stus.json",  //가져올 주소
+                    type:"get",       //전송 방식 get,post
+                    data:{},          //전송 할 데이터 
+                    dataType:"json",  //가져오는 데이터 타입 text,html,json,xml
+                    success:function(data){
+                        alert("성공");
+                        console.log(data);  // 10개 array배열: data.length
+                        //``:자바스크립트 변수를 추가할 수 있음. ${변수}
+                        let dataHtml = '';
+                        for(let i=0;i<10;i++){
+                            dataHtml +=`
+                            <tr>
+                                <td>${data[i].sno}</td>
+                                <td>${data[i].name}</td>
+                                <td>${data[i].kor}</td>
+                                <td>${data[i].eng}</td>
+                                <td>${data[i].math}</td>
+                                <td>${data[i].total}</td>
+                                <td>${data[i].avg}</td>
+                                <td>
+                                    <button type="button" id="uBtn" >수정</button>
+                                    <button type="button" id="dBtn" >삭제</button>
+                                </td>
+                            </tr>
+                            `; //dataHtml에 넣을 내용 만들기
+                        }//for
+                        $("#tbody").html(dataHtml); // tbody에 dataHtml 넣기 append는 추가
+                    },//가져오기 성공 시 실행
+                    error:function(){alert("실패");}  //데이터 못불러올 시 실행
+                });//ajax
+            });//데이터가져오기버튼
+        })//jquery
+        */
+
+    </script>
+</head>
+<body>
+    <button type="button" id="takeBtn">데이터 가져오기</button>
+    
+    <form action="#" method="get">
+        <label>번호</label>
+        <input type="text" id="sno" name="sno"><br>
+        <label>아이디</label>
+        <input type="text" id="name" name="name"><br>
+        <label>날짜</label>
+        <input type="text" id="kor" name="kor"><br>
+        <label>내용</label>
+        <input type="text" id="eng" name="eng"><br>
+        <label>비밀번호</label>
+        <input type="text" id="math" name="math" onkeyup="enterBtn(event)" ><br>
+        <button type="button" id="sbtn" onclick="saveBtn()" >성적저장</button>
+    </form>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>날짜</th>
+            <th>내용</th>
+            <th>비밀번호</th>
+        </tr>
+        <tbody id="tbody">
+           
+        </tbody>
+
+    </table>
+   
+   
+</body>
+</html>
