@@ -14,16 +14,17 @@
             //삭제버튼함수
             $(document).on("click",".dBtn",function(){
                 alert("데이터를 삭제합니다.");
-                console.log($(this).closest("tr").attr("id")); //$(this): 현재 클릭된 위치 
-                console.log($(this).parent().parent().attr("id")); //
+                console.log($(this).closest("tr").attr("id")); //$(this):현재클릭된 위치
+                console.log($(this).parent().parent().attr("id")); 
                 let no = $(this).closest("tr").attr("id");
                 $("#"+no).remove();
-            });//삭제버튼함수
+            });
 
         });//jquery
     </script>
 </head>
 <body>
+    
     <form action="#" method="get">
         <label>번호</label>
         <input type="text" id="sno" name="sno"><br>

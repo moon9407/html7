@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <script>
+        //제이쿼리선언
+        $(function(){
+           
+        });//jquery    
+        function aBtn(){
+            //정규표현식 : 문자열에서 특정문자 조합을 찾기 위한 패턴
+            // 패턴시작 : / /
+            // ^시작, $끝
+            // [해당되는문자]
+            // [0123456789],[0-9],\d,[ab*&]
+            // [0-9],[a-zA-Z],[0-9a-zA-Z],[ㄱ-ㅎ가-힣],[^!@] , ^ 대괄호안 not
+            //
+            // {시작자리,끝자리}
+            // test() => 맞으면true, 틀리면false
+            //let reg_age = /^[ab1]{4}$/;
+            //let reg_age = /^[a]{1}[0-9]{4}$/;
+            // 010-1111-1111
+            //let reg_age = /^01.{1}-[0-9]{4}-[0-9]{4}$/;
+            //let reg_age = /^[01]{3}-[0-9]{4}-[0-9]{4}$/;
+            //let reg_age = /^01[0-9]{1}-[0-9]{4}-[0-9]{4}$/;
+            // 아이디 첫문자는 영문소문자만 가능, 영,숫자가능 3자리이상,10자리이하
+            let reg_age = /^[a-z]{1}\w{2,9}$/;
+
+            if( reg_age.test($("#age").val())){
+                alert("가능")
+            }else{
+                alert("불가능");
+            }
+        }
+       
+        
+    </script>
+</head>
+<body>
+    <label>년도</label>
+    <input type="text" name="age" id="age" placeholder="첫글자는 영문자, 숫자4개를 입력하시오.."><br>
+    <input type="button" id="ageBtn" onclick="aBtn()" value="년도"><br>
+</body>
+</html>

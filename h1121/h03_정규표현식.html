@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <title>Document</title>
+    <script>
+        //제이쿼리선언
+        $(function(){
+            $("#age").keyup(function(e){
+
+                if(e.keyCode == 13){
+                    if(  $("#age").val().trim().length<=0 ){
+                        alert("년도를 입력하세요.")
+                        return;
+                    }
+                    $("#ageBtn").click()
+                }
+            });//age
+
+            $("#ageBtn").click(function(){
+                //alert('확인');
+                /*
+                if(  $("#age").val().trim().length<4 ){
+                    alert("4자리 이상 입력하세요.")
+                    return;
+                }
+                
+                if(isNaN($("#age").val())){
+                    alert("숫자를 입력하셔야 합니다.")
+                }
+                */
+
+
+                // 첫글자는 영문자, 숫자4개를 입력하시오. 예) a2025
+                let age = $("#age").val();
+                // 1. 5자리인지 확인
+                // 2. 첫글자가 문자인지 확인
+                // 3. 2~5번째까지 숫자인지 확인
+                //a2025
+                console.log(age.substr(0,1)); //1번째 문자 - a
+                console.log(age.substr(1));   //2025
+                console.log(age.substr(1,2));  //1번째 2개를 자르기
+                if(age.length<5){
+                    alert("5자리 이상 입력하세요.!")
+                    return;
+                }
+                if(!isNaN(age.substr(0,1))){
+                    alert("문자를 입력하셔야 합니다.");
+                    return;
+                }
+                if(isNaN(age.substr(1))){
+                    alert("숫자를 입력하셔야 합니다.");
+                    return;
+                }
+
+                console.log($("#age").val());
+
+            });//ageBtn
+
+        });//jquery
+       
+       
+        
+    </script>
+</head>
+<body>
+    <label>년도</label>
+    <input type="text" name="age" id="age" placeholder="첫글자는 영문자, 숫자4개를 입력하시오.."><br>
+    <input type="button" id="ageBtn" value="년도"><br>
+</body>
+</html>
