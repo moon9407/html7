@@ -47,10 +47,10 @@ while (True):
         cursor = conn.cursor()  # 창
 
         # query 구문
-        query = "select * from stuscore order by name"
-        cursor.execute(query)
+        query = "select * from stuscore order by name" #쿼리문 작성 : 내용검색
+        cursor.execute(query)                          #쿼리문 실행
         # 데이터를 가져옴.
-        rows = cursor.fetchall()
+        rows = cursor.fetchall()                       #검색된 내용 출력
         print("[ 학생성적출력 ]")
         print("-"*62)
         # db연결
