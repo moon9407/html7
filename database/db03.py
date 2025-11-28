@@ -3,7 +3,7 @@ import oracledb
 conn = oracledb.connect(user="ora_user",password="1111",dsn="localhost:1521/xe")
 
 cursor = cursor = conn.cursor()
-cursor.execute("select * from stuscore order by kor desc,eng asc") # 오라클에서 컨트롤 엔터치는 거
+cursor.execute("select * from stuscore order by kor desc,eng asc")
 rows = cursor.fetchall()
 
 for row in rows:
@@ -11,4 +11,5 @@ for row in rows:
     #print(row)
 
 
-print("연결 : ",conn)
+
+print("연결:",conn)
