@@ -52,3 +52,115 @@ select rank() over(order by name asc) ranks,name,avg from stuscore;
 --------------------------------------------------------
 select * from stuscore;
 
+alter table stuscore add rank number(3) default '0';
+
+select rank() over(order by total desc) ranks,sno,name,total,rank from stuscore;
+select rank() over(order by total desc) ranks from stuscore;
+
+
+select sno from stuscore;
+select rank() over(order by total desc) ranks from stuscore;
+
+-- rank 수정하는 update 명령어
+update stuscore a set rank=
+(
+select ranks from(
+select sno,rank() over(order by total desc) ranks from stuscore
+)b
+where a.sno=b.sno
+)
+;
+select * from stuscore3;
+
+create table stuscore3 as select * from stuscore;
+
+update stuscore3 set rank = 0;
+commit;
+
+alter table stuscore3 add grade nchar(1) default 'D';
+
+-- non-equi join으로
+-- stuscore3, scoregrade
+-- avg기준으로 90~100 A, 80.0~ 80~89.9999 B, C,D,F grade테이블에 수정해서 출력하시오
+select * from scoregrade;
+select * from stuscore3;
+
+select name,avg,a.grade,b.grade from stuscore3 a,scoregrade b
+where avg between lowgrade and highgrade;
+
+update stuscore3 set grade =(
+select grade from scoregrade
+where avg between lowgrade and highgrade);
+
+-- avg 기준으로 ranks컬럼에 출력, 입력하시오
+select rank() over(order by avg desc) ranks from stuscore3;
+
+update stuscore3 a set rank = (
+select ranks from(
+select sno,rank() over(order by avg desc) ranks from stuscore3)b
+where a.sno=b.sno);
+
+commit;
+
+select * from stuscore;
+alter table stuscore add grade nchar(1);
+update stuscore set grade = ' ';
+commit;
+
+select max(sno) from stuscore;
+
+select * from stuscore
+order by sno asc;
+
+select stuscore_seq.nextval from dual;
+
+delete stuscore where sno>100;
+commit;
+
+select * from stuscore3;
+delete stuscore3;
+
+drop table stuscore3;
+create table stuscore3 as select * from stuscore where 1=2;
+
+insert into stuscore3 values(
+stuscore3_seq.nextval,'홍길동',100,100,99,(100+100+99),(100+100+99)/3,sysdate,0,''
+);
+
+select * from stuscore where name like '%na%'
+;
+
+commit;
+
+select * from stuscore3;
+
+
+select * from stuscore;
+-- 등수 쿼리 출력
+select 
+sno,rank() over(order by total desc) ranks,total,rank 
+from stuscore;
+-- 등수 쿼리 수정
+update stuscore a set rank = (
+select ranks from
+(select sno, rank() over(order by total desc) ranks from stuscore)b
+where a.sno = b.sno
+);
+
+update stuscore set rank = 0;
+commit;
+
+
+select sno,avg,a.grade,b.grade from stuscore a,scoregrade b
+where avg between lowgrade and highgrade;
+
+
+update stuscore set grade = (
+select grade from scoregrade
+where avg between lowgrade and highgrade
+)
+;
+
+update stuscore set grade = ' ';
+commit;
+select rank,grade from stuscore;
